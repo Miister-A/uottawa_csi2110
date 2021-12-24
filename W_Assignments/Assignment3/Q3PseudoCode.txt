@@ -1,0 +1,25 @@
+deepestAncestor(node1,node2):
+
+    tempParent1 = node1.getParent()
+    tempParent2 = node2.getParent()
+
+    while (tempParent1.getParent()!=null & tempParent2.getParent()!=null):
+
+        if (tempParent1.getParent()!=null & tempParent2.getParent()!=null):
+            node1Ancestors.add(tempParent1)
+            node2Ancestors.add(tempParent2)
+            tempParent1 = tempParent1.getParent()
+            tempParent2 = tempParent2.getParent()
+
+        if (tempParent1.getParent()==null & tempParent2.getParent()!=null):
+            node2Ancestors.add(tempParent2)
+            tempParent2 = tempParent2.getParent()
+
+        if (tempParent1.getParent()!=null & tempParent2.getParent()==null):
+            node1Ancestors.add(tempParent1)
+            tempParent1 = tempParent1.getParent()
+
+    commonAncestors = combineCommonElementsOfTwoLists(node1Ancestors,node2Ancestors) 
+    lowestCommonAncestor = commonAncestors.get(0)
+    
+    return lowestCommonAncestor
